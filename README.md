@@ -25,9 +25,6 @@ Built with LangChain, Streamlit and AWS Bedrock.
     
     ```json
     {
-      // Use IntelliSense to learn about possible attributes.
-      // Hover to view descriptions of existing attributes.
-      // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
       "version": "0.2.0",
       "configurations": [
         {
@@ -112,7 +109,7 @@ The following are required before we can successfully invoke a Bedrock model:
 
 3. Configure role we will assume locally. Add the following to your `~/.aws/config` file. `boto3` which LangChain uses to connect to AWS, will pick up this configuration and assume the correct identity.
     
-    ```toml
+    ```text
     [profile <whatever-profile-name-you-like]
     role_arn=arn:aws:iam::<aws-account-number>:role/<iam-role-to-assume>
     source_profile=<your-aws-profile> # must be a valid aws profile from ~/.aws/credentials
