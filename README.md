@@ -1,4 +1,4 @@
-# ChattyBot
+# ChittyBot
 
 Simple context aware chat bot that can carry a conversation with a human.
 Built with LangChain, Streamlit and AWS Bedrock.
