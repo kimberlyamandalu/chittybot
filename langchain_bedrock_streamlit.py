@@ -9,7 +9,7 @@ import streamlit as st
 dotenv.load_dotenv()
 
 # Setup Streamlit Chat Interface
-st.header("ChatyBot: AWS Bedrock 🌩️ + LangChain 🦜️🔗 + Streamlit 👑")
+st.header("ChittyBot: AWS Bedrock 🌩️ + LangChain 🦜️🔗 + Streamlit 👑")
 
 # Initialize chat history
 if "messages" not in st.session_state:
