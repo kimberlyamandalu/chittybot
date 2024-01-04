@@ -117,4 +117,6 @@ The following are required before we can successfully invoke a Bedrock model:
 
 ## Run Streamlit Locally
 To run the web application, execute: `streamlit run <your_code_file.py>`.
-This will automatically open a page in your browser and direct you to `localhost:8502`.
+This will automatically open a page in your browser and direct you to `http://localhost:8502`.
+
+To kill/stop the app, simply type `CTRL + C` in the terminal.
