@@ -1,16 +1,27 @@
+# Created a second version of ChittyBot, but this time, using Google Gemini Pro as the LLM.
+# The purpose is to show how LangChain makes it easy to change LLM model used without needing
+# to refactor the entire codebase. 
+
+import os
+import getpass
 import dotenv
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-from langchain.chat_models import BedrockChat
 from langchain.schema import HumanMessage, AIMessage
 import streamlit as st
+from langchain_google_genai import ChatGoogleGenerativeAI
 
-
+    
 # Load environment variables from .env file
 ## DO NOT COMMIT .env --> ADD to .gitignore
 dotenv.load_dotenv()
 
+# The environment variable name must be GOOGLE_API_KEY
+# You may add this env var to your .env file
+# If the environment variable is not set, prompt the user to enter the value
+if "GOOGLE_API_KEY" not in os.environ:
+    os.environ['GOOGLE_API_KEY'] = getpass.getpass("Provide your Google API Key")
+
 # Setup Streamlit Chat Interface
-st.header("ChittyBot: AWS Bedrock 🌩️ + LangChain 🦜️🔗 + Streamlit 👑")
+st.header("ChittyBot: Google Gemini Pro 🌩️ + LangChain 🦜️🔗 + Streamlit 👑")
 
 # Initialize chat history stored in Streamlit session
 if "messages" not in st.session_state:
@@ -19,14 +30,8 @@ if "messages" not in st.session_state:
 
 # Initialize LLM object stored in Streamlit session
 if "llm" not in st.session_state:
-    st.session_state.llm = BedrockChat(
-        model_id="anthropic.claude-v2", # AWS Bedrock Model ID
-        model_kwargs={"temperature": 0.7, "max_tokens_to_sample": 1024}, # AWS Bedrock Model arguments
-        streaming=True, # enable response streaming
-        callbacks=[StreamingStdOutCallbackHandler()], # response streaming handler
-        verbose=False
-    )
-    print("--- LLM initialized ---")
+    st.session_state.llm = ChatGoogleGenerativeAI(model="gemini-pro")
+    print("--- LLM initialized --- ")
 
 # Reuse LLM object stored in Streamlit session
 llm = st.session_state.llm
