@@ -2,3 +2,4 @@ boto3>=1.33.13
 streamlit
 langchain
 python-dotenv
+langchain_google_genai
